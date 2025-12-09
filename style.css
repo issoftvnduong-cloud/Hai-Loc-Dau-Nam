@@ -22,6 +22,12 @@ body {
     z-index: 1;
 }
 
+/* Scale factor chung cho toàn bộ scene - dựa trên viewport width chuẩn 1920px */
+:root {
+    --base-width: 1920px;
+    --scale-factor: clamp(0.5, calc(100vw / var(--base-width)), 1.5);
+}
+
 /* Cây mai */
 .tree-container {
     position: absolute;
@@ -49,12 +55,23 @@ body {
 }
 
 /* Bao lì xì */
-.envelope {
-    width: 40px;
-    height: 60px;
-    background: url('envelope.svg') center/cover no-repeat;
+.lucky-envelopes {
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 3;
+}
+
+.envelope {
+    width: calc(40px * var(--scale-factor));
+    height: calc(60px * var(--scale-factor));
+    /* background: url('envelope.svg') center/cover no-repeat; */
+    background-color: #7a0000;
+    color: #ffffff;
+    text-align: center;
+    position: absolute;
     cursor: pointer;
     animation: swing 2s ease-in-out infinite;
 }
@@ -88,4 +105,156 @@ body {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Toggle button */
+.flower-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.toggle-btn {
+    background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+    color: white;
+    border: none;
+    padding: calc(12px * var(--scale-factor)) calc(24px * var(--scale-factor));
+    border-radius: calc(25px * var(--scale-factor));
+    font-size: calc(16px * var(--scale-factor));
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 calc(4px * var(--scale-factor)) calc(15px * var(--scale-factor)) rgba(255, 107, 157, 0.4);
+    transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+    transform: translateY(calc(-2px * var(--scale-factor)));
+    box-shadow: 0 calc(6px * var(--scale-factor)) calc(20px * var(--scale-factor)) rgba(255, 107, 157, 0.6);
+}
+
+.toggle-btn:active {
+    transform: translateY(0);
+}
+
+/* Container cho hoa trên cây */
+.flowers-on-tree {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Hoa đào - 5 cánh hình tròn quả trứng */
+.flower-bloom {
+    position: absolute;
+    width: calc(50px * var(--scale-factor));
+    height: calc(50px * var(--scale-factor));
+    transform-origin: center;
+}
+
+/* Cánh hoa - hình tròn quả trứng */
+.flower-bloom .petal {
+    position: absolute;
+    width: calc(18px * var(--scale-factor));
+    height: calc(24px * var(--scale-factor));
+    top: 50%;
+    left: 50%;
+    transform-origin: center bottom;
+    border-radius: 50% 50% 50% 0;
+}
+
+/* Vị trí 5 cánh hoa */
+.flower-bloom .petal:nth-child(1) {
+    transform: translate(-20%, -20%) rotate(0deg) translateY(calc(-14px * var(--scale-factor)));
+}
+
+.flower-bloom .petal:nth-child(2) {
+    transform: translate(-80%, -20%) rotate(72deg) translateY(calc(-14px * var(--scale-factor)));
+}
+
+.flower-bloom .petal:nth-child(3) {
+    transform: translate(-100%, -80%) rotate(144deg) translateY(calc(-14px * var(--scale-factor)));
+}
+
+.flower-bloom .petal:nth-child(4) {
+    transform: translate(-20%, -80%) rotate(216deg) translateY(calc(-14px * var(--scale-factor)));
+}
+
+.flower-bloom .petal:nth-child(5) {
+    transform: translate(-10%, -50%) rotate(288deg) translateY(calc(-14px * var(--scale-factor)));
+}
+
+/* Nụ hoa - hình tròn ở giữa */
+.flower-bloom .center {
+    position: absolute;
+    width: calc(20px * var(--scale-factor));
+    height: calc(20px * var(--scale-factor));
+    border-radius: 50%;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    box-shadow: 0 0 calc(4px * var(--scale-factor)) rgba(0, 0, 0, 0.3);
+}
+
+/* Hoa đào - màu hồng */
+.flower-bloom.flower-peach .petal {
+    background: linear-gradient(135deg, #ffb3d9, #ff8cc8);
+    box-shadow: 0 calc(2px * var(--scale-factor)) calc(4px * var(--scale-factor)) rgba(255, 107, 157, 0.3);
+}
+
+.flower-bloom.flower-peach .center {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+}
+
+/* Hoa mai - màu vàng */
+.flower-bloom.flower-apricot .petal {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    box-shadow: 0 calc(2px * var(--scale-factor)) calc(4px * var(--scale-factor)) rgba(255, 200, 0, 0.3);
+}
+
+.flower-bloom.flower-apricot .center {
+    background: linear-gradient(135deg, #ff6b00, #ff8c00);
+}
+
+/* Animation cho hoa */
+.flower-bloom {
+    animation: flowerFloat 3s ease-in-out infinite;
+}
+
+.flower-bloom:nth-child(1) { animation-delay: 0s; }
+.flower-bloom:nth-child(2) { animation-delay: 0.3s; }
+.flower-bloom:nth-child(3) { animation-delay: 0.6s; }
+.flower-bloom:nth-child(4) { animation-delay: 0.9s; }
+.flower-bloom:nth-child(5) { animation-delay: 1.2s; }
+.flower-bloom:nth-child(6) { animation-delay: 1.5s; }
+.flower-bloom:nth-child(7) { animation-delay: 1.8s; }
+.flower-bloom:nth-child(8) { animation-delay: 2.1s; }
+.flower-bloom:nth-child(9) { animation-delay: 2.4s; }
+.flower-bloom:nth-child(10) { animation-delay: 2.7s; }
+
+@keyframes flowerFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(calc(-5px * var(--scale-factor))) rotate(5deg); }
+}
+
+.envelope-up{
+    background-color: #ffd700;
+    box-shadow: 0 calc(1px * var(--scale-factor)) calc(1px * var(--scale-factor)) 0 #1a1a1a;
+    position: relative;
+    width: 100%;
+    height: 20%;
+    border-radius: 0 0 calc(10px * var(--scale-factor)) calc(10px * var(--scale-factor));
+}
+.enve-cicle-first{
+    position: relative;
+    left: 10%;
+    top: 10%;  
+    width: 80%;
+    height: 53%;
+    border-radius: 100%;
+    border: #ffd700 calc(1px * var(--scale-factor)) solid;
 }

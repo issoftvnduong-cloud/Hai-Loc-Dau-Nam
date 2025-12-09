@@ -22,3 +22,30 @@ envelopes.forEach(env => {
 closePopup.addEventListener("click", () => {
     popup.classList.add("hidden");
 });
+
+// Toggle giữa hoa đào và hoa mai
+const flowerToggle = document.getElementById("flowerToggle");
+const toggleText = document.getElementById("toggleText");
+const flowers = document.querySelectorAll(".flower-bloom");
+let isPeachFlower = true; // Mặc định là hoa đào
+
+flowerToggle.addEventListener("click", () => {
+    isPeachFlower = !isPeachFlower;
+    
+    flowers.forEach(flower => {
+        if (isPeachFlower) {
+            flower.classList.remove("flower-apricot");
+            flower.classList.add("flower-peach");
+            toggleText.textContent = "Hoa Đào";
+        } else {
+            flower.classList.remove("flower-peach");
+            flower.classList.add("flower-apricot");
+            toggleText.textContent = "Hoa Mai";
+        }
+    });
+});
+
+// Khởi tạo hoa đào mặc định
+flowers.forEach(flower => {
+    flower.classList.add("flower-peach");
+});

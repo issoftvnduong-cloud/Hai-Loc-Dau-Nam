@@ -1,48 +1,194 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<title>Hái Lộc Đầu Xuân</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Hái Lộc Đầu Xuân</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<div class="scene">
+    <div class="scene">
 
-    <!-- Nền bầu trời -->
-    <div class="background-gradient"></div>
-
-    <!-- Cây mai SVG -->
-    <div class="tree-container">
-        <div class="tree-root">
-            <img src="assets/images/Treeroot.svg" class="img-tree-root" alt="Cây mai">
-        </div>
+        <!-- Nền bầu trời -->
+        <div class="background-gradient"></div>
         
-    </div>
-
-    <!-- Lì xì treo -->
-    <div class="lucky-envelopes">
-        <div class="envelope" style="left:45%; top:40%"></div>
-        <div class="envelope" style="left:55%; top:35%"></div>
-        <div class="envelope" style="left:60%; top:50%"></div>
-        <div class="envelope" style="left:50%; top:55%"></div>
-        <div class="envelope" style="left:40%; top:50%"></div>
-    </div>
-
-    <!-- Múa lân (placeholder) -->
-    <div class="lion-dance"></div>
-
-    <!-- Popup quẻ / lời chúc -->
-    <div id="popup" class="popup hidden">
-        <div class="popup-content">
-            <h2>Lộc đầu xuân</h2>
-            <p id="fortuneText">Chúc mừng năm mới!</p>
-            <button id="closePopup">Đóng</button>
+        <!-- Toggle button -->
+        <div class="flower-toggle">
+            <button id="flowerToggle" class="toggle-btn">
+                <span id="toggleText">Hoa Đào</span>
+            </button>
         </div>
+
+        <!-- Cây mai SVG -->
+        <div class="tree-container">
+            <div class="tree-root">
+                <img src="assets/images/Treeroot.svg" class="img-tree-root" alt="Cây mai">
+            </div>
+            
+            <!-- Hoa trên cây -->
+            <div class="flowers-on-tree">
+                <div class="flower-bloom" style="left: 35%; top: 5%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 45%; top: 1%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 55%; top: 1%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 50%; top: 5%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 40%; top: 10%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 20%; top: 8%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 25%; top: 13%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 48%; top: 15%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 68%; top: 15%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 46%; top: 38%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 96%; top: 48%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 56%; top: 48%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 16%; top: 48%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 76%; top: 52%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 69%; top: 38%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 86%; top: 38%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 6%; top: 38%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 66%; top: 46%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 83%; top: 60%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 90%; top: 50%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 76%; top: 38%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 90%; top: 32%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 76%; top: 16%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 56%; top: 28%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 10%; top: 28%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 15%; top: 18%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 21%; top: 32%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 1%; top: 42%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 9%; top: 53%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+                <div class="flower-bloom" style="left: 52%; top: -5%;">
+                    <span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span><span class="petal"></span>
+                    <span class="center"></span>
+                </div>
+            </div>
+            <div class="lucky-envelopes">
+            <div class="envelope" style="left:45%; top:40%">a</div>
+            <div class="envelope" style="left:55%; top:35%">
+                <div class="envelope-up"></div>
+                <div class="enve-cicle-first"></div>
+                <div class="enve-cicle-second"></div>
+            </div>
+            <div class="envelope" style="left:60%; top:50%">
+                <div class="envelope-up"></div>
+                <div class="enve-cicle-first"></div>
+                <div class="enve-cicle-second"></div>
+            </div>
+            <div class="envelope" style="left:50%; top:55%">
+                <div class="envelope-up"></div>
+                <div class="enve-cicle-first"></div>
+                <div class="enve-cicle-second"></div>
+            </div>
+            <div class="envelope" style="left:40%; top:50%">
+                <div class="envelope-up"></div>
+                <div class="enve-cicle-first"></div>
+                <div class="enve-cicle-second"></div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Múa lân (placeholder) -->
+        <div class="lion-dance"></div>
+
+        <!-- Popup quẻ / lời chúc -->
+        <div id="popup" class="popup hidden">
+            <div class="popup-content">
+                <h2>Lộc đầu xuân</h2>
+                <p id="fortuneText">Chúc mừng năm mới!</p>
+                <button id="closePopup">Đóng</button>
+            </div>
+        </div>
+
     </div>
 
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
